@@ -15,10 +15,7 @@ CREATE TABLE Editoriales (
   Nombre VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Generos (
-  Id INT PRIMARY KEY IDENTITY(1,1),
-  Nombre VARCHAR(255) NOT NULL
-);
+
 
 CREATE TABLE Libros (
   Id INT PRIMARY KEY IDENTITY(1,1),
@@ -30,13 +27,7 @@ CREATE TABLE Libros (
 );
 
 
-CREATE TABLE Libros_Generos(
-    LibroId INT,
-    GeneroId INT,
-    PRIMARY KEY (LibroId, GeneroId),
-    FOREIGN KEY (LibroId) REFERENCES Libros(Id),
-    FOREIGN KEY (GeneroId) REFERENCES Generos(Id)
-);
+
 
 CREATE TABLE Usuarios (
     Id INT PRIMARY KEY IDENTITY(1,1),

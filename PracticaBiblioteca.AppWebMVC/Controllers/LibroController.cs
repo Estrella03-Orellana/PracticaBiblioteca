@@ -48,8 +48,8 @@ namespace PracticaBiblioteca.AppWebMVC.Controllers
         // GET: Libro/Create
         public IActionResult Create()
         {
-            ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Id");
-            ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Id");
+            ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Nombre");
+            ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Nombre");
             return View();
         }
 
@@ -66,8 +66,8 @@ namespace PracticaBiblioteca.AppWebMVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Id", libro.AutorId);
-            ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Id", libro.EditorialId);
+            ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Nombre", libro.AutorId);
+            ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Nombre", libro.EditorialId);
             return View(libro);
         }
 
@@ -84,8 +84,8 @@ namespace PracticaBiblioteca.AppWebMVC.Controllers
             {
                 return NotFound();
             }
-            ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Id", libro.AutorId);
-            ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Id", libro.EditorialId);
+            ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Nombre", libro.AutorId);
+            ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Nombre", libro.EditorialId);
             return View(libro);
         }
 
@@ -121,8 +121,8 @@ namespace PracticaBiblioteca.AppWebMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Id", libro.AutorId);
-            ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Id", libro.EditorialId);
+            ViewData["AutorId"] = new SelectList(_context.Autores, "Id", "Nombre", libro.AutorId);
+            ViewData["EditorialId"] = new SelectList(_context.Editoriales, "Id", "Nombre", libro.EditorialId);
             return View(libro);
         }
 

@@ -19,7 +19,7 @@ public partial class BibliotecaContext : DbContext
 
     public virtual DbSet<Editorial> Editoriales { get; set; }
 
-    public virtual DbSet<Genero> Generos { get; set; }
+ 
 
     public virtual DbSet<Libro> Libros { get; set; }
 
@@ -46,14 +46,7 @@ public partial class BibliotecaContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<Genero>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Generos__3214EC07F4DBC434");
-
-            entity.Property(e => e.Nombre)
-                .HasMaxLength(255)
-                .IsUnicode(false);
-        });
+     
 
         modelBuilder.Entity<Libro>(entity =>
         {
@@ -72,22 +65,7 @@ public partial class BibliotecaContext : DbContext
                 .HasForeignKey(d => d.EditorialId)
                 .HasConstraintName("FK__Libros__Editoria__5070F446");
 
-            entity.HasMany(d => d.Generos).WithMany(p => p.Libros)
-                .UsingEntity<Dictionary<string, object>>(
-                    "LibrosGenero",
-                    r => r.HasOne<Genero>().WithMany()
-                        .HasForeignKey("GeneroId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__Libros_Ge__Gener__5441852A"),
-                    l => l.HasOne<Libro>().WithMany()
-                        .HasForeignKey("LibroId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__Libros_Ge__Libro__534D60F1"),
-                    j =>
-                    {
-                        j.HasKey("LibroId", "GeneroId").HasName("PK__Libros_G__AF383CC9BCC3CDD0");
-                        j.ToTable("Libros_Generos");
-                    });
+           
         });
 
         modelBuilder.Entity<Usuario>(entity =>
